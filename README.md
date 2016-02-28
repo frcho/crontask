@@ -94,6 +94,7 @@ And there you have it. One task to rule them all.
 ```
 
 
+Source
+=====
+https://inuits.eu/blog/creating-automated-interval-based-cron-tasks-symfony2
 
-
-A Symfony project created on February 27, 2016, 8:04 pm.
