@@ -1,0 +1,3 @@
+frcho_crontask_homepage:
+    path:     /
+    defaults: { _controller: FrchoCrontaskBundle:Default:index }

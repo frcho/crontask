@@ -1,0 +1,3 @@
+frcho_crontask:
+    resource: "@FrchoCrontaskBundle/Resources/config/routing.yml"
+    prefix:   /

@@ -1,0 +1,10 @@
+parameters:
+    command.default_name: Javier
+    
+services:
+    frcho.crontask_default:
+        class: Frcho\Bundle\CrontaskBundle\Util\DefaultCommands
+        arguments:
+            entityManager: '@doctrine.orm.entity_manager'
+            container: '@service_container'
+
