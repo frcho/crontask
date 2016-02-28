@@ -79,7 +79,6 @@ namespace Your\ExampleBundle\Command;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\StringInput;
 
 class CronTasksDefaultCommand extends ContainerAwareCommand {
 
