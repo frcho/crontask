@@ -115,9 +115,9 @@ class CronTasksDefaultCommand extends ContainerAwareCommand {
 ```
 ##Note: 
 range support:
-*minutes
-*hours
-*days
+* minutes
+* hours
+* days
 
 
 Usage
