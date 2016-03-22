@@ -10,25 +10,19 @@
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>{% block title_page %}Admin{% endblock %}{% block default_page_title %}{% endblock %}</title>
-
         {# -------------------------------------------------------------------------------------------------- STYLESHEETS #}
-      {#  {% block stylesheets %}
+        {% block stylesheets %}
             {% stylesheets filter='?yui_css,css_url_rewrite'
-            '@FrchoCrontaskBundle/Resources/public/css/styles.css'
-            '@FrchoCrontaskBundle/Resources/public/css/bootstrap-tagsinput.css'
-            '@FrchoCrontaskBundle/Resources/public/css/bootstrap-toggle.min.css'
+            '@FrchoCrontaskBundle/Resources/public/css/bootstrap.min.css'
+            '@FrchoCrontaskBundle/Resources/public/css/bootstrap2-toggle.min.css'
             %}   
             <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
             {% endstylesheets %}  
-        {% endblock %}#}
+        {% endblock %}
 
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
-        {# --------------------------------------------------------------------------------------------- JAVASCRIPTS_HEAD #}
-        
-        {#{%  block minecss %}
-        {% endblock %}#}
     </head>
     <body>
         <div class="wrapper">
@@ -38,23 +32,33 @@
         </section> 
         <!-- /.content -->
     </div>
+
+
+    {# ------------------------------------------------------------------------------------------------------ JAVASCRIPTS #}
+    {% block javascripts %}
+
+        <script type="text/javascript" src="{{ asset('bundles/frchocrontask/js/jquery-1.12.2.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/frchocrontask/js/bootstrap-toggle.min.js') }}"></script>
+
+    {% endblock %}
     <!-- /.content-wrapper -->
+    <script>
 
-{# ------------------------------------------------------------------------------------------------------ JAVASCRIPTS #}
+        $(document).ready(function () {
+        {# ----------------------------------------------------------------------------------------------- JAVASCRIPTS_INLINE #}
+        {% block javascripts_inline %}
 
-<script>
-    $(document).ready(function () {
+        {% endblock %}
+        {# ----------------------------------------------------------------------------------------------- SCRIPTS #}
+        {% block scripts %}
 
-    {# ----------------------------------------------------------------------------------------------- SCRIPTS #}
-    {% block scripts %}
+        {% endblock %}  
+            });
 
-    {% endblock %}  
-        });
+        {% block functions_javascript %}
+        {% endblock %} 
 
-    {% block functions_javascript %}
-    {% endblock %} 
-
-</script>
+    </script>
 
 </body>
 </html>

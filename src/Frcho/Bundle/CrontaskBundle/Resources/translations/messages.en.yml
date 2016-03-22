@@ -1,0 +1,21 @@
+crontask:
+    minutes: "Minutes"
+    hours: "Hours"
+    days: "Days"
+    on: 'On' 
+    off: 'Off'
+    save: "Save"
+    delete_login_logs: "Delete login logs"
+    inactive_users: "Inactive Users"
+    send_file_api_services: 'Send api services file'
+    check_file_api_services: 'Check api services file'
+    send_imei_api_services: 'Send api services imei'
+    check_imei_api_services: 'Check api services imei'
+    backup_manager_backup: 'Backups'
+    text_note: 'In this section you will be able to program a time in which an action will be executed within the application.'
+    example_note: "Example: Inactivate a user who hasn't logged in the application for 30 days."
+    message_scheduled_task: 'Enabled or disabled task'
+    scheduled_task: 'Scheduled Task'      
+
+    
+    
