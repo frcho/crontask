@@ -25,7 +25,7 @@ class CronTasksDefaultCommand extends ContainerAwareCommand {
         $container = $this->getContainer();
         $defaultCommands = array(
             array("name" => "Example asset symlinking task",
-                "interval" => 120 /* Run once every 2 minutes */,
+                "interval" => 2 /* Run once every 2 minutes */,
                 "range" => 'minutes',
                 "commands" => 'assets:install --symlink web',
                 "enabled" => true

@@ -22,7 +22,6 @@ class DefaultCommands {
     }
 
     function setArrayCommands(array $param) {
-
         foreach ($param as $param) {
 
             $prev = $this->em->getRepository('FrchoCrontaskBundle:CronTask')
@@ -38,6 +37,7 @@ class DefaultCommands {
                 }
 
                 $interval = Util::convertDaysHoursMinutes($param['interval'], $range);
+               
                 $cronTask = new Entity\CronTask();
                 $cronTask->setName($param['name']);
                 $cronTask->setRange($range);
@@ -47,6 +47,7 @@ class DefaultCommands {
 
                 $this->em->persist($cronTask);
             }
+             
             $this->em->flush();
         }
     }
