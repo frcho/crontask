@@ -31,7 +31,7 @@ class CronTasksDefaultCommand extends ContainerAwareCommand {
                 "enabled" => true
             ),
             array("name" => "Example asset  task",
-                "interval" => 3600 /* Run once every hour */,
+                "interval" => 2 /* Run once every 2 hour */,
                 "range" => 'hours',
                 "commands" => 'cache:clear',
                 "enabled" => false

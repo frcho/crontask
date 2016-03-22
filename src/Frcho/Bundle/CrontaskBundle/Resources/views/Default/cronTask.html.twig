@@ -1,0 +1,52 @@
+{#{% extends 'FrchoCrontaskBundle:layout:base-layout.html.twig' %}#}
+{#{% block title_page %}{{'menu.scheduled_task'|trans }}{% endblock %}
+{% block page_title %}{{'menu.scheduled_task'|trans }}{% endblock %}#}
+{% block page_content %}
+    <div class="box box-warning displyblok">
+ 
+
+        <div class="box-body">      
+            <div class="box-header with-border">
+                <h3 class="box-title">{{'menu.scheduled_task'|trans }}</h3>
+            </div>
+
+            <div class="callout callout-info">
+                <h4>{{'crontask.text_note'|trans }}</h4>
+
+                <p>{{'crontask.example_note'|trans }}</p>
+            </div>
+
+
+            <div class="col-md-10">
+                <form action="{{path('frcho_cron_task')}}" method="post" class="form-horizontal">
+                    {% set i = 0 %}
+                    {% for form in forms %}
+
+                        <div class="box-body col-sm-12">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label textalingleft">{{form.vars.value.name|trans}}</label>
+                                <input type="hidden" name="master_unlock_cron_task_type{{i}}[range]" value="{{form.vars.data.range}}"/>
+                                <div class="col-sm-3">
+                                    {{form_widget(form['interval'], {'attr': {'class': 'form-control only_numbers control-label', 'maxlength': 7 }}) }}
+                                </div>
+                                <div class="col-sm-1">
+                                    <label class="col-m-3 control-label textalingleft">{{form.vars.data.range|trans}}</label>
+                                </div>
+                                <div class="col-sm-3" style="margin-top: -7px">                                                
+                                    {{ form_widget(form.statusTask, {'attr': {'class':'col-sm-12','data-toggle':'toggle','data-on':'global.on'|trans,'data-off':'global.off'|trans,'data-onstyle':'success','data-offstyle':'danger'} }) }}
+                                    <p class="help-block">{{'crontask.message_scheduled_task'|trans}}</p>                                                       
+                                </div>
+                            </div>
+                        </div>
+                        {% set i = i + 1%}
+                    {% endfor %}
+                    <div class="col-md-12">
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">{{ 'global.save'|trans }}</button>
+                        </div>
+                    </div>                  
+                </form>
+            </div>
+        </div>        
+    </div>
+{% endblock %}

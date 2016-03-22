@@ -1,0 +1,60 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]><html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="">
+        <meta name="keywords" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>{% block title_page %}Admin{% endblock %}{% block default_page_title %}{% endblock %}</title>
+
+        {# -------------------------------------------------------------------------------------------------- STYLESHEETS #}
+      {#  {% block stylesheets %}
+            {% stylesheets filter='?yui_css,css_url_rewrite'
+            '@FrchoCrontaskBundle/Resources/public/css/styles.css'
+            '@FrchoCrontaskBundle/Resources/public/css/bootstrap-tagsinput.css'
+            '@FrchoCrontaskBundle/Resources/public/css/bootstrap-toggle.min.css'
+            %}   
+            <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+            {% endstylesheets %}  
+        {% endblock %}#}
+
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        {# --------------------------------------------------------------------------------------------- JAVASCRIPTS_HEAD #}
+        
+        {#{%  block minecss %}
+        {% endblock %}#}
+    </head>
+    <body>
+        <div class="wrapper">
+            <!-- Main content -->
+            <section class="content ">
+            {% block page_content %}{% endblock %}
+        </section> 
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+{# ------------------------------------------------------------------------------------------------------ JAVASCRIPTS #}
+
+<script>
+    $(document).ready(function () {
+
+    {# ----------------------------------------------------------------------------------------------- SCRIPTS #}
+    {% block scripts %}
+
+    {% endblock %}  
+        });
+
+    {% block functions_javascript %}
+    {% endblock %} 
+
+</script>
+
+</body>
+</html>

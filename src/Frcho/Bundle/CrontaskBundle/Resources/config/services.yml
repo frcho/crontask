@@ -7,4 +7,10 @@ services:
         arguments:
             entityManager: '@doctrine.orm.entity_manager'
             container: '@service_container'
-
+            
+    frcho..form.type.cron_task:
+        class: Frcho\Bundle\CrontaskBundle\Form\CronTaskType
+        arguments:
+            - "@service_container"
+        tags:
+            - { name: form.type }
