@@ -43,6 +43,8 @@ class AppKernel extends Kernel
             // ...
 
             new Frcho\Bundle\CrontaskBundle\FrchoCrontaskBundle(),
+            //new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            //new Fkr\CssURLRewriteBundle\FkrCssURLRewriteBundle(),
 
         );
 
@@ -53,6 +55,40 @@ class AppKernel extends Kernel
 }
 ```
 
+
+In order to see the view, the bundle comes with a implementation.
+
+import the routing to your `routing.yml`
+```yaml
+frcho_cron_task:
+    resource: "@FrchoCrontaskBundle/Resources/config/routes.yml"
+
+```
+
+Update the database schema :
+```bash
+symfony 3.0
+bin/console doctrine:schema:update --force
+
+symfony 2.8
+app/console doctrine:schema:update --force
+```
+
+You must add FrchoCrontaskBundle to the assetic.bundle config
+```bash
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        [FrchoCrontaskBundle]
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        #closure:
+     
+fkr_css_url_rewrite:
+    rewrite_only_if_file_exists: true
+    clear_urls: true
+```
 Implementing interval-based cron tasks in Symfony2 using Symfony commands and a Doctrine entity
 ========
 
@@ -127,10 +163,13 @@ The master command
 ```bash
 $ php app/console crontasks:run
 ```
+```bash
+$ php bin/console crontasks:default
+```
 
-After visiting /crontasks/test, you should now have a single CronTask in your
+After execute crontasks:default, you should now have a single CronTask in your
 database, ready to be executed. Now, you could execute
-php app/console crontasks:run yourself, or add that command as an actual cron
+php bin/console crontasks:run yourself, or add that command as an actual cron
 job that is executed once every few minutes like so:
 
 ```bash
