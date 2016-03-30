@@ -27,6 +27,30 @@ class CronTaskController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
+        $cronTasks = $em->getRepository(self::FrchoCrontaskBundleCronTask)->findAll();
+        $forms = array();
+        $i = 0;
+        foreach ($cronTasks as $cronTask) {
+
+            $form = $this->container
+                    ->get('form.factory')
+                    ->createNamedBuilder(CronTaskType::FORM_PREFIX . $i, CronTaskType::class, $cronTask)
+                    ->getForm()
+                    ->createView();
+            array_push($forms, $form);
+            $i++;
+        }
+
+        return $this->render('FrchoCrontaskBundle:Default:cronTask.html.twig', array(
+                    'forms' => $forms,
+        ));
+    }
+
+    public function cronTaskUpdateAction(Request $request) {
+
+
+        $em = $this->getDoctrine()->getManager();
+
         if ($request->isMethod('POST')) {
 
             $parameters = $request->request->getIterator()->getArrayCopy();
@@ -49,25 +73,9 @@ class CronTaskController extends Controller {
 
                 $i++;
             }
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
         }
-
-        $cronTasks = $em->getRepository(self::FrchoCrontaskBundleCronTask)->findAll();
-        $forms = array();
-        $i = 0;
-        foreach ($cronTasks as $cronTask) {
-
-            $form = $this->container
-                    ->get('form.factory')
-                    ->createNamedBuilder(CronTaskType::FORM_PREFIX . $i, CronTaskType::class, $cronTask)
-                    ->getForm()
-                    ->createView();
-            array_push($forms, $form);
-            $i++;
-        }
-
-        return $this->render('FrchoCrontaskBundle:Default:cronTask.html.twig', array(
-                    'forms' => $forms,
-        ));
     }
 
 }
