@@ -61,7 +61,7 @@ In order to see the view, the bundle comes with a implementation.
 import the routing to your `routing.yml`
 ```yaml
 frcho_cron_task:
-    resource: "@FrchoCrontaskBundle/Resources/config/routes.yml"
+    resource: "@FrchoCrontaskBundle/Resources/config/routing.yml"
 
 ```
 
