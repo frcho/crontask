@@ -49,7 +49,7 @@
 #net Beans
 /nbproject/
 /composer.lock
-/README.md
+#README.md
 
 /composer
 *.sh
