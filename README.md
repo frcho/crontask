@@ -43,8 +43,8 @@ class AppKernel extends Kernel
             // ...
 
             new Frcho\Bundle\CrontaskBundle\FrchoCrontaskBundle(),
-            //new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-            //new Fkr\CssURLRewriteBundle\FkrCssURLRewriteBundle(),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new Fkr\CssURLRewriteBundle\FkrCssURLRewriteBundle(),
 
         );
 
@@ -58,7 +58,7 @@ class AppKernel extends Kernel
 
 In order to see the view, the bundle comes with a implementation.
 
-import the routing to your `routing.yml`
+Import the routing to your `routing.yml`
 ```yaml
 frcho_cron_task:
     resource: "@FrchoCrontaskBundle/Resources/config/routing.yml"
