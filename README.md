@@ -187,3 +187,8 @@ Source
 =====
 https://inuits.eu/blog/creating-automated-interval-based-cron-tasks-symfony2
 
+
+License
+-------
+
+This bundle is under the [MIT license](https://github.com/frcho/crontask/blob/master/Resources/meta/LICENSE)
