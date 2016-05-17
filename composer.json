@@ -1,0 +1,32 @@
+{
+    "name": "frcho/crontask",
+    "description": "The easy way to realize cron task using Symfony2",
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "authors": [
+        {
+            "name": "Luis Fernando Granados",
+            "email": "luisfer1g@gmail.com"
+        }
+    ],
+    "keywords": [
+        "crontab",
+        "task",
+        "cron",
+        "jobs",
+        "symfony2"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Frcho\\Bundle\\CrontaskBundle\\": ""
+        }
+    },
+    "require": {
+        "php": ">=5.3.9",
+        "symfony/symfony": "~2.8|~3.0",
+        "doctrine/orm": "^2.4.8",
+        "doctrine/doctrine-bundle": "1.6.*",   
+        "fkr/cssurlrewrite-bundle": "*",
+        "symfony/assetic-bundle": "2.8.*"   
+    }
+}
