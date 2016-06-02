@@ -24,9 +24,9 @@ class CronTaskController extends Controller {
 
     public function cronTaskAction(Request $request) {
 
-
+        
         $em = $this->getDoctrine()->getManager();
-
+        $crontaskStyle = $request->get('crontaskStyle');
         $cronTasks = $em->getRepository(self::FrchoCrontaskBundleCronTask)->findAll();
         $forms = array();
         $i = 0;
@@ -40,9 +40,10 @@ class CronTaskController extends Controller {
             array_push($forms, $form);
             $i++;
         }
-
+        
         return $this->render('FrchoCrontaskBundle:Default:cronTask.html.twig', array(
                     'forms' => $forms,
+                    'crontaskStyle' => $crontaskStyle,
         ));
     }
 
