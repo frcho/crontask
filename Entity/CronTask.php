@@ -7,8 +7,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity
  * @ORM\Table(name="cron_task")
+ * @ORM\Entity(repositoryClass="Frcho\Bundle\CrontaskBundle\Entity\CronTaskRepository")
  * @UniqueEntity("name")
  */
 class CronTask {
@@ -55,6 +55,12 @@ class CronTask {
      * @ORM\Column(name="crontask_status", type="boolean", nullable=true)
      */
     private $statusTask;
+
+    /**
+     * Variable que permite ocultar un comando
+     * @ORM\Column(name="is_hide_task", type="boolean", nullable=true)
+     */
+    private $isHide;
 
     public function getId() {
         return $this->id;
@@ -110,6 +116,14 @@ class CronTask {
 
     function setStatusTask($statusTask) {
         $this->statusTask = $statusTask;
+    }
+
+    function getIsHide() {
+        return $this->isHide;
+    }
+
+    function setIsHide($isHide) {
+        $this->isHide = $isHide;
     }
 
     public function __toString() {
