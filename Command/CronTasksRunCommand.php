@@ -23,7 +23,7 @@ class CronTasksRunCommand extends ContainerAwareCommand {
         $this->output = $output;
         $em = $this->getContainer()->get('doctrine.orm.entity_manager');
         $translator = $this->getContainer()->get('translator');
-        $crontasks = $em->getRepository('FrchoCrontaskBundle:CronTask')->findAll();
+        $crontasks = $em->getRepository('FrchoCrontaskBundle:CronTask')->tasksActive();
 
         $size = count($crontasks);
 
