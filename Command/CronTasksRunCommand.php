@@ -71,8 +71,8 @@ class CronTasksRunCommand extends ContainerAwareCommand {
     }
 
     private function runCommand($string) {
-        // Split namespace and arguments
-        $namespace = split(' ', $string)[0];
+        // explode namespace and arguments
+        $namespace = explode(' ', $string)[0];
 
         // Set input
         $command = $this->getApplication()->find($namespace);
