@@ -29,18 +29,17 @@ class DefaultCommands {
 
             $prev = $this->em->getRepository('FrchoCrontaskBundle:CronTask')
                     ->findOneBy(array('name' => $param['name'], 'commands' => $param['commands']));
-
             $range = $this->range($param);
             $interval = Util::convertDaysHoursMinutes($param['interval'], $range);
 
-            if (!empty($prev) && $prev->getIsHide() == true && $prev->getInterval() != $param['interval'] || $prev->getRange() != $param['range'] ) {
+            if (!empty($prev) && $prev->getIsHide() == true && $prev->getInterval() != $param['interval'] || !empty($prev) && $prev->getRange() != $param['range']) {
                 $range = $this->range($param);
                 $interval = Util::convertDaysHoursMinutes($param['interval'], $range);
                 $prev->setRange($range);
                 $prev->setInterval($interval);
                 $this->em->persist($prev);
             }
-            
+
             if (!$prev) {
 
                 $range = $this->range($param);
@@ -61,6 +60,7 @@ class DefaultCommands {
     }
 
     public function range($param) {
+        $range = null;
         if (isset($param['range']) && $param['range'] == Entity\CronTask::MINUTES) {
             $range = Entity\CronTask::MINUTES;
         } elseif (isset($param['range']) && $param['range'] == Entity\CronTask::HOURS) {
