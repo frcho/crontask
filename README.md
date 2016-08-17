@@ -130,13 +130,14 @@ class CronTasksDefaultCommand extends ContainerAwareCommand {
         $container = $this->getContainer();
         $defaultCommands = array(
             array("name" => "Example asset symlinking task",
-                "interval" => 120 /* Run once every 2 minutes */,
+                "interval" => 2 /* Run once every 2 minutes */,
                 "range" => 'minutes',
                 "commands" => 'assets:install --symlink web',
+                "isHide" => false, /*isHide == true this command don't show in view schedule task*/,
                 "enabled" => true
             ),
             array("name" => "Example asset  task",
-                "interval" => 3600 /* Run once every hour */,
+                "interval" => 1 /* Run once every hour */,
                 "range" => 'hours',
                 "commands" => 'cache:clear',
                 "enabled" => false
