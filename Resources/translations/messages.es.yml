@@ -4,7 +4,7 @@ crontask:
     days: "Días"
     on: 'On' 
     off: 'Off'
-    save: "Save"
+    save: "Guardar"
     delete_login_logs: "Eliminar registros de inicio de sesión"
     inactive_users: "Inactivar usuarios"
     send_file_api_services: 'Send api services file'
