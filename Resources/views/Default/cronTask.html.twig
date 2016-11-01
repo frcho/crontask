@@ -28,7 +28,17 @@
                                     {{form_widget(form['interval'], {'attr': {'class': 'form-control only_numbers control-label', 'maxlength': 7 }}) }}
                                 </div>
                                 <div class="col-sm-1">
-                                    <label class="col-m-3 control-label textalingleft">{{form.vars.data.range|trans}}</label>
+                                    <label class="col-m-3 control-label textalingleft">
+                                        {% if form.vars.data.range == 'minutes' %}
+                                            {{'crontask.minutes'|trans}}
+                                        {% endif %}
+                                        {% if form.vars.data.range == 'hours' %}
+                                            {{'crontask.hours'|trans}}
+                                        {% endif %}
+                                        {% if form.vars.data.range == 'days' %}
+                                            {{'crontask.days'|trans}}
+                                        {% endif %}
+                                    </label>
                                 </div>
                                 <div class="col-sm-3" style="margin-top: -7px">                                                
                                     {{ form_widget(form.statusTask, {'attr': {'class':'col-sm-12','data-toggle':'toggle','data-on':'crontask.on'|trans,'data-off':'crontask.off'|trans,'data-onstyle':'success','data-offstyle':'danger'} }) }}
