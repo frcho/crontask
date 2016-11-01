@@ -4,14 +4,7 @@ crontask:
     days: "Días"
     on: 'On' 
     off: 'Off'
-    save: "Guardar"
-    delete_login_logs: "Eliminar registros de inicio de sesión"
-    inactive_users: "Inactivar usuarios"
-    send_file_api_services: 'Send api services file'
-    check_file_api_services: 'Check api services file'
-    send_imei_api_services: 'Send api services imei'
-    check_imei_api_services: 'Check api services imei'
-    backup_manager_backup: 'Backups'
+    save: "Guardar"   
     text_note: 'En esta seccion podra programar los tiempos en que se ejecutaran algunas funciones que tiene la aplicacion.'
     example_note: 'Ejemplo: Desactivar usuarios que no ingresen en la aplicacion luego de 30 dias.'
     message_scheduled_task: 'Activar o desactivar tarea'
