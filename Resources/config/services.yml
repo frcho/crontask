@@ -4,9 +4,7 @@ parameters:
 services:
     frcho.crontask_default:
         class: Frcho\Bundle\CrontaskBundle\Util\DefaultCommands
-        arguments:
-            entityManager: '@doctrine.orm.entity_manager'
-            container: '@service_container'
+        arguments: [ "@doctrine.orm.entity_manager","@service_container" ]
             
     frcho..form.type.cron_task:
         class: Frcho\Bundle\CrontaskBundle\Form\CronTaskType
