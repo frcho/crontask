@@ -1,6 +1,3 @@
-parameters:
-    command.default_name: Javier
-    
 services:
     frcho.crontask_default:
         class: Frcho\Bundle\CrontaskBundle\Util\DefaultCommands
