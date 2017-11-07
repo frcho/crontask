@@ -17,7 +17,7 @@ Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
 
 ```bash
-$ composer require frcho/crontask 1.0.0
+$ composer require frcho/crontask 1.0.2
 ```
 
 This command requires you to have Composer installed globally, as explained
