@@ -25,9 +25,9 @@
         "php": ">=5.3.9",
         "doctrine/orm": "^v2.5.14",
         "doctrine/doctrine-bundle": "1.8.*",   
-        "symfony/form": "^3.4",
-        "symfony/console": "^3.4",
-        "symfony/twig-bundle": "^3.4"
+        "symfony/form": "^3.4 || ^4.0",
+        "symfony/console": "^3.4 || ^4.0",
+        "symfony/twig-bundle": "^3.4 || ^4.0"
     },
      "extra": {
         "branch-alias": {
