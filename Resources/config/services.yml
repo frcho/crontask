@@ -7,6 +7,10 @@ services:
         arguments: [ "@doctrine.orm.entity_manager","@service_container" ]
         public: true
             
+    Frcho\Bundle\CrontaskBundle\Command\CronTasksRunCommand:
+        tags:
+            - { name: 'console.command', command: 'crontasks:run' }   
+
     frcho..form.type.cron_task:
         class: Frcho\Bundle\CrontaskBundle\Form\CronTaskType
         arguments:
