@@ -1,9 +1,9 @@
 frcho_crontask_homepage:
-    path:     /crontask
-    defaults: { _controller: FrchoCrontaskBundle:Default:index }
+    path:     /
+    defaults: { _controller: Frcho\Bundle\CrontaskBundle\Controller\DefaultController::indexAction }
 frcho_cron_task:
-    path:    /viewTask
-    defaults: { _controller: "FrchoCrontaskBundle:CronTask:cronTask" }
+    path:     /viewTask
+    defaults: { _controller: Frcho\Bundle\CrontaskBundle\Controller\CronTaskController::cronTask }
 frcho_cron_task_update:
     path:     /cronTaskUpdate
-    defaults: { _controller: "FrchoCrontaskBundle:CronTask:cronTaskUpdate" }    
+    defaults: { _controller: Frcho\Bundle\CrontaskBundle\Controller\CronTaskController::cronTaskUpdate }    
