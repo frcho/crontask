@@ -1,6 +1,3 @@
-frcho_crontask_homepage:
-    path:     /
-    defaults: { _controller: Frcho\Bundle\CrontaskBundle\Controller\DefaultController::indexAction }
 frcho_cron_task:
     path:     /viewTask
     defaults: { _controller: Frcho\Bundle\CrontaskBundle\Controller\CronTaskController::cronTaskAction }
