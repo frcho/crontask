@@ -1,6 +1,6 @@
 {
     "name": "frcho/crontask",
-    "description": "The easy way to realize cron task using Symfony2",
+    "description": "The easy way to realize cron task using Symfony4",
     "license": "MIT",
     "type": "symfony-bundle",
     "authors": [
@@ -14,7 +14,7 @@
         "task",
         "cron",
         "jobs",
-        "symfony2"
+        "symfony"
     ],
     "autoload": {
         "psr-4": {
