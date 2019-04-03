@@ -2,7 +2,7 @@
 
 namespace Frcho\Bundle\CrontaskBundle\Command\ScheduleTask;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -11,7 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @author Luis Fernando Granados <lgranados@kijho.com>
  * @since 1.0 01/02/2016
  */
-class CronTasksDefaultCommand extends ContainerAwareCommand {
+class CronTasksDefaultCommand extends Command {
 
     protected function configure() {
 
@@ -22,7 +22,7 @@ class CronTasksDefaultCommand extends ContainerAwareCommand {
 
         set_time_limit(0);
         ini_set('memory_limit', '-1');
-        $container = $this->getContainer();
+        $container = $this->getApplication()->getKernel()->getContainer();
         $defaultCommands = array(
             array("name" => "Example asset symlinking task",
                 "interval" => 2 /* Run once every 2 minutes */,
@@ -42,3 +42,4 @@ class CronTasksDefaultCommand extends ContainerAwareCommand {
     }
 
 }
+
