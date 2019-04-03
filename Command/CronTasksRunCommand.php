@@ -2,12 +2,12 @@
 
 namespace Frcho\Bundle\CrontaskBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\StringInput;
 
-class CronTasksRunCommand extends ContainerAwareCommand {
+class CronTasksRunCommand extends Command {
 
     private $output;
 
@@ -21,8 +21,9 @@ class CronTasksRunCommand extends ContainerAwareCommand {
     protected function execute(InputInterface $input, OutputInterface $output) {
 
         $this->output = $output;
-        $em = $this->getContainer()->get('doctrine.orm.entity_manager');
-        $translator = $this->getContainer()->get('translator');
+        $container = $this->getApplication()->getKernel()->getContainer();
+        $em = $container->get('doctrine.orm.entity_manager');
+        $translator = $container->get('translator');
         $crontasks = $em->getRepository('FrchoCrontaskBundle:CronTask')->tasksActive();
 
         $size = count($crontasks);
