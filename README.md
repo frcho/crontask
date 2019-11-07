@@ -17,7 +17,7 @@ Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
 
 ```bash
-$ composer require frcho/crontask 1.0.2
+$ composer require frcho/crontask 1.0.3
 ```
 
 This command requires you to have Composer installed globally, as explained
@@ -67,11 +67,7 @@ frcho_cron_task:
 
 Update the database schema :
 ```bash
-symfony 3.0
 bin/console doctrine:schema:update --force
-
-symfony 2.8
-app/console doctrine:schema:update --force
 ```
 
 You must add FrchoCrontaskBundle to the assetic.bundle config
@@ -110,34 +106,41 @@ Create your command
 
 
 ```bash
-namespace Your\ExampleBundle\Command;
+<?php
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+namespace App\Command;
+
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class CronTasksDefaultCommand extends ContainerAwareCommand {
+class CronTasksDefaultCommand extends Command
+{
 
-    protected function configure() {
+    protected function configure()
+    {
 
         $this->setName('crontasks:default')->setDescription('Creates the commands by default in database.');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output) {
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
 
         set_time_limit(0);
         ini_set('memory_limit', '-1');
         $container = $this->getContainer();
         $defaultCommands = array(
-            array("name" => "Example asset symlinking task",
-                "interval" => 2 /* Run once every 2 minutes */,
+            array(
+                "name" => "Example asset symlinking task",
+                "interval" => 2, // Run once every 2 minutes,
                 "range" => 'minutes',
                 "commands" => 'assets:install --symlink web',
-                "isHide" => false, /*isHide == true this command don't show in view schedule task*/,
+                "isHide" => false, // isHide == true this command don't show in view schedule task
                 "enabled" => true
             ),
-            array("name" => "Example asset  task",
-                "interval" => 1 /* Run once every hour */,
+            array(
+                "name" => "Example asset task",
+                "interval" => 1, // Run once every hour
                 "range" => 'hours',
                 "commands" => 'cache:clear',
                 "enabled" => false
@@ -146,8 +149,8 @@ class CronTasksDefaultCommand extends ContainerAwareCommand {
 
         $container->get('frcho.crontask_default')->setArrayCommands($defaultCommands);
     }
-
 }
+
 ```
 ##Note: 
 range support:
