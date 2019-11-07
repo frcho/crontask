@@ -128,7 +128,7 @@ class CronTasksDefaultCommand extends Command
 
         set_time_limit(0);
         ini_set('memory_limit', '-1');
-        $container = $this->getContainer();
+        $container = $this->getApplication()->getKernel()->getContainer();
         $defaultCommands = array(
             array(
                 "name" => "Example asset symlinking task",
