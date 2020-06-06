@@ -69,6 +69,7 @@ class CronTasksRunCommand extends Command {
             // Flush database changes
             $em->flush();
         }
+        return 0;
     }
 
     private function runCommand($string) {
