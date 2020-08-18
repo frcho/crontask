@@ -13,24 +13,21 @@
         {# -------------------------------------------------------------------------------------------------- STYLESHEETS #}
         {% if crontaskStyle is defined and crontaskStyle is empty %}
             <link rel="stylesheet" href="{{ asset('bundles/frchocrontask/css/bootstrap.min.css') }}" />
-            <link rel="stylesheet" href="{{ asset('bundles/frchocrontask/css/bootstrap2.min.css')}}" />            
+            <link rel="stylesheet" href="{{ asset('bundles/frchocrontask/css/bootstrap2.min.css')}}" />
         {% else %}
 
         {% endif %}
 
-
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-
     </head>
     <body>
         <div>
             <!-- Main content -->
             <section class="content ">
             {% block page_content %}{% endblock %}
-        </section> 
+        </section>
         <!-- /.content -->
     </div>
-
 
     {# ------------------------------------------------------------------------------------------------------ JAVASCRIPTS #}
     {% if crontaskStyle is defined and crontaskStyle is empty %}
@@ -52,13 +49,12 @@
         {# ----------------------------------------------------------------------------------------------- SCRIPTS #}
         {% block scripts %}
 
-        {% endblock %}  
+        {% endblock %}
             });
 
         {% block functions_javascript %}
-        {% endblock %} 
+        {% endblock %}
 
     </script>
-
 </body>
 </html>

@@ -1,6 +1,6 @@
 {
 	"name": "frcho/crontask",
-	"description": "The easy way to realize cron task using Symfony 3.4, 4, 5",
+	"description": "The easy way to realize cron task using Symfony 4, 5",
 	"license": "MIT",
 	"type": "symfony-bundle",
 	"authors": [{
@@ -20,7 +20,7 @@
 		}
 	},
 	"require": {
-		"php": ">=5.3.9",
+		"php": ">=7.0",
 		"doctrine/orm": "^v2.5.14",
 		"doctrine/doctrine-bundle": "^2.0.8",
 		"symfony/form": "^3.4|^4.0|^5.0",
