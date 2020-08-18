@@ -1,11 +1,9 @@
-FrchoCrontaskBundle
+Crontask Bundle
 ===================
 
 Creating new cron jobs for every trivial tasks is a time-consuming task, though.
 And depending on the environment your application will be hosted in, you may not
 always be able to add a cron job to the system whenever you feel like it.
-
-
 
 Installation
 ============
@@ -13,79 +11,18 @@ Installation
 Step 1: Download the Bundle
 ---------------------------
 
-Open a command console, enter your project directory and execute the
-following command to download the latest stable version of this bundle:
+Open a command console and execute the following command to download the latest stable version of this bundle:
 
 ```bash
-$ composer require frcho/crontask 1.0.4
+$ composer require frcho/crontask 1.1.0
 ```
 
 This command requires you to have Composer installed globally, as explained
 in the [installation chapter](https://getcomposer.org/doc/00-intro.md)
 of the Composer documentation.
 
-Step 2: Enable the Bundle
--------------------------
 
-Then, enable the bundle by adding it to the list of registered bundles
-in the `app/AppKernel.php` file of your project:
-
-```php
-<?php
-// app/AppKernel.php
-
-// ...
-class AppKernel extends Kernel
-{
-    public function registerBundles()
-    {
-        $bundles = array(
-            // ...
-
-            new Frcho\Bundle\CrontaskBundle\FrchoCrontaskBundle(),
-            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-            new Fkr\CssURLRewriteBundle\FkrCssURLRewriteBundle(),
-
-        );
-
-        // ...
-    }
-
-    // ...
-}
-```
-
-
-In order to see the view, the bundle comes with a implementation.
-
-Import the routing to your `routing.yml`
-```yaml
-frcho_cron_task:
-    resource: "@FrchoCrontaskBundle/Resources/config/routing.yml"
-
-```
-
-Update the database schema :
-```bash
-bin/console doctrine:schema:update --force
-```
-
-You must add FrchoCrontaskBundle to the assetic.bundle config
-```bash
-assetic:
-    debug:          "%kernel.debug%"
-    use_controller: false
-    bundles:        [FrchoCrontaskBundle]
-    #java: /usr/bin/java
-    filters:
-        cssrewrite: ~
-        #closure:
-     
-fkr_css_url_rewrite:
-    rewrite_only_if_file_exists: true
-    clear_urls: true
-```
-Implementing interval-based cron tasks in Symfony2 using Symfony commands and a Doctrine entity
+Implementing interval-based cron tasks in Symfony5 using Symfony commands and a Doctrine entity
 ========
 
 The Doctrine entity known as the 'CronTask'
@@ -123,7 +60,7 @@ class CronTasksDefaultCommand extends Command
         $this->setName('crontasks:default')->setDescription('Creates the commands by default in database.');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
 
         set_time_limit(0);
@@ -135,7 +72,7 @@ class CronTasksDefaultCommand extends Command
                 "interval" => 2, // Run once every 2 minutes,
                 "range" => 'minutes',
                 "commands" => 'assets:install --symlink web',
-                "isHide" => false, // isHide == true this command don't show in view schedule task
+                "isHide" => false, /* "isHide == true, if you have enable view for this bundle, This command doesn't show in the view schedule task" */
                 "enabled" => true
             ),
             array(
@@ -148,49 +85,62 @@ class CronTasksDefaultCommand extends Command
         );
 
         $container->get('frcho.crontask_default')->setArrayCommands($defaultCommands);
+        return 0;
     }
 }
 
 ```
-##Note: 
+##Note:
 range support:
 * minutes
 * hours
 * days
 
-
 Usage
 =====
 
-The master command
+The command to run other commands
 
 ```bash
-$ php app/console crontasks:run
+$ php bin/console crontasks:run
 ```
+
+The command to populate de database, with the commands to run by crontask:run
+
 ```bash
 $ php bin/console crontasks:default
 ```
 
 After execute crontasks:default, you should now have a single CronTask in your
-database, ready to be executed. Now, you could execute
-php bin/console crontasks:run yourself, or add that command as an actual cron
-job that is executed once every few minutes like so:
+database, ready to be executed.
+
+Now, you could execute **php bin/console crontasks:run** yourself.
+Or add that command as an actual cron job that is executed once every few minutes like so:
 
 ```bash
 $ crontab -e
 Now add your cron job:
 
 # Run every five minutes
-*/5 * * * * php /var/www/your-project/app/console crontasks:run
+*/5 * * * * php path-your-project/bin/console crontasks:run
 
-And there you have it. One task to rule them all.
+And there you have it.
+One task to rule them all.
 ```
+<!--
+In order to see the view, the bundle comes with a implementation.
 
+Import the routing to your `routing.yml`
+```yaml
+frcho_cron_task:
+    resource: "@FrchoCrontaskBundle/Resources/config/routing.yml"
 
-Source
-=====
-https://inuits.eu/blog/creating-automated-interval-based-cron-tasks-symfony2
+``` -->
 
+Update the database schema :
+```bash
+bin/console doctrine:schema:update --force
+```
 
 License
 -------

@@ -2,10 +2,10 @@
 
 namespace Frcho\Bundle\CrontaskBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use Frcho\Bundle\CrontaskBundle\Entity AS Entity;
+use Frcho\Bundle\CrontaskBundle\Entity as Entity;
 use Frcho\Bundle\CrontaskBundle\Form\CronTaskType;
 use Frcho\Bundle\CrontaskBundle\Util\Util;
 
@@ -13,7 +13,8 @@ use Frcho\Bundle\CrontaskBundle\Util\Util;
  * Cron Task Controller
  *
  */
-class CronTaskController extends Controller {
+class CronTaskController extends AbstractController
+{
 
     const accessDeniedMessage = 'accessDeniedMessage';
     const globalAccessDenied = 'global.access_denied';
@@ -22,9 +23,9 @@ class CronTaskController extends Controller {
     const session = 'session';
     const translator = 'translator';
 
-    public function cronTaskAction(Request $request) {
+    public function cronTaskAction(Request $request)
+    {
 
-        
         $em = $this->getDoctrine()->getManager();
         $crontaskStyle = $request->get('crontaskStyle');
         $cronTasks = $em->getRepository(self::FrchoCrontaskBundleCronTask)->findAll();
@@ -33,21 +34,22 @@ class CronTaskController extends Controller {
         foreach ($cronTasks as $cronTask) {
 
             $form = $this->container
-                    ->get('form.factory')
-                    ->createNamedBuilder(CronTaskType::FORM_PREFIX . $i, CronTaskType::class, $cronTask)
-                    ->getForm()
-                    ->createView();
+                ->get('form.factory')
+                ->createNamedBuilder(CronTaskType::FORM_PREFIX . $i, CronTaskType::class, $cronTask)
+                ->getForm()
+                ->createView();
             array_push($forms, $form);
             $i++;
         }
-        
+
         return $this->render('FrchoCrontaskBundle:Default:cronTask.html.twig', array(
-                    'forms' => $forms,
-                    'crontaskStyle' => $crontaskStyle,
+            'forms' => $forms,
+            'crontaskStyle' => $crontaskStyle,
         ));
     }
 
-    public function cronTaskUpdateAction(Request $request) {
+    public function cronTaskUpdateAction(Request $request)
+    {
 
 
         $em = $this->getDoctrine()->getManager();
@@ -78,5 +80,4 @@ class CronTaskController extends Controller {
             return $this->redirect($referer);
         }
     }
-
 }

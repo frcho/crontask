@@ -3,7 +3,7 @@
 {% block page_content %}
     <div class="box box-warning">
 
-        <div class="box-body">      
+        <div class="box-body">
             <div class="box-header with-border">
                 <h3 class="box-title">{{'crontask.scheduled_task'|trans }}</h3>
             </div>
@@ -13,7 +13,6 @@
 
                 <p>{{'crontask.example_note'|trans }}</p>
             </div>
-
 
             <div class="col-md-10">
                 <form action="{{path('frcho_cron_task_update')}}" method="post" class="form-horizontal">
@@ -40,9 +39,9 @@
                                         {% endif %}
                                     </label>
                                 </div>
-                                <div class="col-sm-3" style="margin-top: -7px">                                                
+                                <div class="col-sm-3" style="margin-top: -7px">
                                     {{ form_widget(form.statusTask, {'attr': {'class':'col-sm-12','data-toggle':'toggle','data-on':'crontask.on'|trans,'data-off':'crontask.off'|trans,'data-onstyle':'success','data-offstyle':'danger'} }) }}
-                                    <p class="help-block">{{'crontask.message_scheduled_task'|trans}}</p>                                                       
+                                    <p class="help-block">{{'crontask.message_scheduled_task'|trans}}</p>
                                 </div>
                             </div>
                         </div>
@@ -52,16 +51,9 @@
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">{{ 'crontask.save'|trans }}</button>
                         </div>
-                    </div>                  
+                    </div>
                 </form>
             </div>
-        </div>        
+        </div>
     </div>
 {% endblock %}
-{#{% block stylesheets %}
-
-{% endblock %}
-{% block javascripts %}
-    
-
-{% endblock %}#}
