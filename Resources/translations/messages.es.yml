@@ -2,9 +2,9 @@ crontask:
     minutes: "Minutos"
     hours: "Horas"
     days: "Días"
-    on: 'On' 
+    on: 'On'
     off: 'Off'
-    save: "Guardar"   
+    save: "Guardar"
     text_note: 'En esta seccion podra programar los tiempos en que se ejecutaran algunas funciones que tiene la aplicacion.'
     example_note: 'Ejemplo: Desactivar usuarios que no ingresen en la aplicacion luego de 30 dias.'
     message_scheduled_task: 'Activar o desactivar tarea'
