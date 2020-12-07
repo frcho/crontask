@@ -2,13 +2,10 @@ crontask:
     minutes: "Minutes"
     hours: "Hours"
     days: "Days"
-    on: 'On' 
+    on: 'On'
     off: 'Off'
     save: "Save"
     text_note: 'In this section you will be able to program a time in which an action will be executed within the application.'
     example_note: "Example: Inactivate a user who hasn't logged in the application for 30 days."
     message_scheduled_task: 'Enabled or disabled task'
-    scheduled_task: 'Scheduled Task'      
-
-    
-    
+    scheduled_task: 'Scheduled Task'
